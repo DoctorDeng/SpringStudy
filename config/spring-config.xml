@@ -5,4 +5,9 @@
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<bean id="helloBean" class="test.HelloWorld"></bean>
+	<bean id="Amercian" class="practice.Amercian"></bean>
+	<bean id="Chinese" class="practice.Chinese"></bean>
+	<bean id="doSay" class="practice.DoSay">
+		<property name="say" ref="Chinese"></property>
+	</bean>
 </beans>
