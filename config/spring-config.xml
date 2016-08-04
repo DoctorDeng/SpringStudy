@@ -10,4 +10,26 @@
 	<bean id="doSay"     class="practice.DoSay">
 		<property name="say" ref="Chinese"></property>
 	</bean>
+	
+	<bean id="grade" class="com.doctor.entity.Grade">
+		<property name="gradeId" value="22"></property>
+		<property name="gradeName" value="大三"></property>
+	</bean>
+	
+	<bean id="student" class="com.doctor.entity.Student">
+		<property name="id" value="1"></property>
+		<property name="name" value="Doctor"></property>
+		<property name="grade" ref="grade"></property>
+	</bean>
+	
+	<bean id="student1" class="com.doctor.entity.Student">
+		<property name="id" value="2"></property>
+		<property name="name" value="XCC"></property>
+		<property name="grade">
+			<bean id="grade1" class="com.doctor.entity.Grade">
+				<property name="gradeId" value="11"></property>
+				<property name="gradeName" value="大四"></property>
+			</bean>
+		</property>
+	</bean>
 </beans>

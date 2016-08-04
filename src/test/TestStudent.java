@@ -9,10 +9,17 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class TestHelloWorld {
+import com.doctor.entity.Grade;
+import com.doctor.entity.Student;
+
+public class TestStudent {
+	private static ApplicationContext context = null;
 	private static Logger log = Logger.getLogger(TestHelloWorld.class);
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		if (context == null) {
+			context = new ClassPathXmlApplicationContext("spring-config.xml");
+		}
 	}
 
 	@AfterClass
@@ -28,14 +35,15 @@ public class TestHelloWorld {
 	}
 
 	@Test
-	public void testSayHello() {
-		/*HelloWorld hello = new HelloWorld();
-		hello.sayHello();*/
-		log.info("开始测试");
-		ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-		HelloWorld hello = (HelloWorld)context.getBean("helloBean");
-		hello.sayHello();
-		log.info("结束测试");
+	public void test() {
+		log.info("开始注入");
+		Student stu = (Student) context.getBean("student");
+		Grade grade = (Grade) context.getBean("grade");
+		log.info("获取的stu中的grade");
+		System.out.println(stu.getGrade().toString());
+		grade.setGradeId(55);
+		log.info("grade被修改后");
+		System.out.println(stu.getGrade().toString());
 	}
 
 }
