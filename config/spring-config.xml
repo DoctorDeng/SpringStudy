@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd"
+	default-autowire="byName">
 
-	<bean id="helloBean" class="test.HelloWorld"></bean>
-	<bean id="Amercian"  class="practice.Amercian"></bean>
-	<bean id="Chinese"   class="practice.Chinese"></bean>
+	<!-- <bean id="helloBean" class="test.HelloWorld"></bean>
+	<bean id="amercian"  class="practice.Amercian"></bean>
+	<bean id="chinese"   class="practice.Chinese"></bean>
 	<bean id="doSay"     class="practice.DoSay">
-		<property name="say" ref="Chinese"></property>
-	</bean>
+		<property name="say" ref="chinese"></property>
+	</bean> -->
 	
-	<bean id="grade" class="com.doctor.entity.Grade">
+<!-- 	<bean id="grade" class="com.doctor.entity.Grade">
 		<property name="gradeId" value="22"></property>
 		<property name="gradeName" value="大三"></property>
+	</bean>
+	
+	<bean id="student3" class="com.doctor.entity.Student" autowire="byName">
+		<property name="id" value="1"></property>
+		<property name="name" value="Doctor"></property>
+		<property name="grade">
+			<bean id="grade3" class="com.doctor.entity.Grade" autowire="byName"></bean>
+		</property>
 	</bean>
 	
 	<bean id="student" class="com.doctor.entity.Student">
@@ -32,4 +44,62 @@
 			</bean>
 		</property>
 	</bean>
+	
+	<bean id="testSet" class="com.doctor.entity.TestSet">
+		<property name="stringList">
+			<list>
+				<value>测试String一</value>
+				<value>测试String二</value>
+				<value>测试String三</value>
+			</list>
+		</property>
+		
+		<property name="studentList">
+			<list>
+				<ref bean="student1" />
+				<bean class="com.doctor.entity.Student" ></bean>
+			</list>
+		</property>
+		
+		<property name="map">
+			<map>
+				<entry>
+					<key><value>测试Map一</value></key>
+					<value>我是测试Map一</value>
+				</entry>
+				<entry>
+					<key><value>测试Map二</value></key>
+					<value>我是测试Map二</value>
+				</entry>
+			</map>
+		</property>
+		
+		<property name="set">
+			<set>
+				<value>测试Set一</value>
+				<value>测试Set二</value>
+				<value>测试Set三</value>
+			</set>
+		</property>
+	</bean>
+	多例Bean
+	<bean id="studentProtoType" class="com.doctor.entity.Student" scope="prototype">
+		<property name="id" value="1"></property>
+		<property name="name" value="Doctor"></property>
+		<property name="grade" ref="grade"></property>
+	</bean>
+	 -->
+	<bean id="studentService" class="com.doctor.service.impl.StudentServiceImpl"></bean>
+	<bean id="logServiceAdvice" class="com.doctor.advice.LogServiceAdvice"></bean>
+	
+	<aop:config>
+		<aop:aspect id="logAspect" ref="logServiceAdvice">
+			<aop:pointcut expression="execution(* com.doctor.service.*.*(..))" id="logPointCut"/>		
+			<aop:before method="doBefore" pointcut-ref="logPointCut" ></aop:before>
+			<aop:after method="doAfter" pointcut-ref="logPointCut"/>
+			<aop:after-returning method="afterReturning" pointcut-ref="logPointCut"/>
+			<aop:around method="doAround" pointcut-ref="logPointCut" />
+			<aop:after-throwing method="afterThrowing" pointcut-ref="logPointCut" throwing="ta"/>
+		</aop:aspect>
+	</aop:config>
 </beans>
