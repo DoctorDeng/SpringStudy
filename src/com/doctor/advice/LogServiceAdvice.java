@@ -19,18 +19,19 @@ public class LogServiceAdvice {
 	}
 	
 	public void doAfter(JoinPoint jp) {
-		log.info("添加学生成功"+"---后置通知----");
+		log.info("添加学生成功" + "---后置通知----");
 	}
 	
 	public void afterReturning(JoinPoint jp) {
-		log.info("操作成功!"+ "----返回通知----");
+		
+		log.info("操作成功!" + "----返回通知----");
 	}
 	
 	public void doAround(ProceedingJoinPoint pjp) throws Throwable {
 		log.info("------环绕通知开始执行----");
 		//继续执行
 		pjp.proceed();
-		log.info("-----环绕通知执行结束-----");
+		log.info("------环绕通知执行结束----");
 	}
 	
 	public void afterThrowing(JoinPoint jp,Throwable ta) {

@@ -1,15 +1,29 @@
 package com.doctor.service.impl;
 
-import org.apache.log4j.Logger;
-
+import com.doctor.dao.StudentDao;
+import com.doctor.entity.Student;
 import com.doctor.service.StudentService;
 
 public class StudentServiceImpl implements StudentService {
-	private static Logger log = Logger.getLogger(StudentServiceImpl.class);
+	private StudentDao studentDao;
 	
-	@Override
-	public void addStudent(String name) {
-		log.info("添加学生:" + name);
-		int i = 1/0;
+	public void setStudentDao(StudentDao studentDao) {
+		this.studentDao = studentDao;
 	}
+
+	@Override
+	public int addStudent(Student student) {
+		return studentDao.insertStudent(student);
+	}
+
+	@Override
+	public int updateStudent(Student student) {
+		return studentDao.updateStudent(student);
+	}
+
+	@Override
+	public int delStudent(Student student) {
+		return studentDao.deleteStudent(student);
+	}
+
 }

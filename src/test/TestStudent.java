@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.doctor.entity.Grade;
-import com.doctor.entity.Student;
+import com.doctor.entity.Grade1;
+import com.doctor.entity.Student1;
 
 public class TestStudent {
 	private static ApplicationContext context = null;
@@ -37,8 +37,8 @@ public class TestStudent {
 	@Test
 	public void test() {
 		log.info("开始注入");
-		Student stu = (Student) context.getBean("student");
-		Grade grade = (Grade) context.getBean("grade");
+		Student1 stu = (Student1) context.getBean("student");
+		Grade1 grade = (Grade1) context.getBean("grade");
 		log.info("获取的stu中的grade");
 		System.out.println(stu.getGrade().toString());
 		grade.setGradeId(55);

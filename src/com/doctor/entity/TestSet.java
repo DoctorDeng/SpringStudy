@@ -6,13 +6,13 @@ import java.util.Set;
 
 public class TestSet {
 	private List<String> stringList;
-	private List<Student> studentList;
+	private List<Student1> studentList;
 	private Map<String,String> map;
 	private Set<String> set;
 	
 	public TestSet(){}
 	
-	public TestSet(List<String> stringList, List<Student> studentList, Map<String, String> map, Set<String> set) {
+	public TestSet(List<String> stringList, List<Student1> studentList, Map<String, String> map, Set<String> set) {
 		super();
 		this.stringList = stringList;
 		this.studentList = studentList;
@@ -32,10 +32,10 @@ public class TestSet {
 	public void setStringList(List<String> stringList) {
 		this.stringList = stringList;
 	}
-	public List<Student> getStudentList() {
+	public List<Student1> getStudentList() {
 		return studentList;
 	}
-	public void setStudentList(List<Student> studentList) {
+	public void setStudentList(List<Student1> studentList) {
 		this.studentList = studentList;
 	}
 	public Map<String, String> getMap() {

@@ -2,10 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://www.springframework.org/schema/aop 
-	http://www.springframework.org/schema/aop/spring-aop.xsd"
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd"
 	default-autowire="byName">
 
 	<!-- <bean id="helloBean" class="test.HelloWorld"></bean>
@@ -89,17 +92,45 @@
 		<property name="grade" ref="grade"></property>
 	</bean>
 	 -->
-	<bean id="studentService" class="com.doctor.service.impl.StudentServiceImpl"></bean>
+<!-- 	<bean id="studentService" class="com.doctor.service.impl.StudentServiceImpl"></bean>
 	<bean id="logServiceAdvice" class="com.doctor.advice.LogServiceAdvice"></bean>
-	
 	<aop:config>
+		定义aop的切面
 		<aop:aspect id="logAspect" ref="logServiceAdvice">
+			定义切面的切入点
 			<aop:pointcut expression="execution(* com.doctor.service.*.*(..))" id="logPointCut"/>		
+			前置通知 最开始执行(在所有切入点之前调用)
 			<aop:before method="doBefore" pointcut-ref="logPointCut" ></aop:before>
+			后置通知 最后执行(在所有切入点之后调用)
 			<aop:after method="doAfter" pointcut-ref="logPointCut"/>
+			返回通知 在切入点返回以后调用
 			<aop:after-returning method="afterReturning" pointcut-ref="logPointCut"/>
 			<aop:around method="doAround" pointcut-ref="logPointCut" />
+			在切入点发生异常时调用
 			<aop:after-throwing method="afterThrowing" pointcut-ref="logPointCut" throwing="ta"/>
 		</aop:aspect>
-	</aop:config>
+	</aop:config> -->
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<!-- <constructor-arg name="dataSource" ref="dataSource" /> -->
+		<constructor-arg index="0" ref="dataSource"></constructor-arg>
+        <!-- <property name="dataSource" ref="dataSource"/> -->
+    </bean>
+	<!-- 使用了dbcp数据源，从context读取了jdbc属性文件中设定的值 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+	<!-- 加载jdbc属性文件到上下文 -->
+    <context:property-placeholder location="jdbc.properties"/>
+    <!-- 向Dao中注入jdbcTemplate -->
+    <bean id="studentDao" class="com.doctor.dao.impl.StudentDaoImpl">
+    	<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+    </bean>
+    <!-- 向Service中注入dao -->
+    <bean id="studentService" class="com.doctor.service.impl.StudentServiceImpl">
+    	<property name="studentDao" ref="studentDao"></property>
+    </bean>
 </beans>

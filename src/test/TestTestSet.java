@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.doctor.entity.Student;
+import com.doctor.entity.Student1;
 import com.doctor.entity.TestSet;
 
 public class TestTestSet {
@@ -43,17 +43,17 @@ public class TestTestSet {
 		Student student = (Student) context.getBean("student");
 		System.out.println(student.getGrade().toString());*/
 		log.info("===========测试自动装配第二种=========");
-		Student student3 = (Student) context.getBean("student3");
+		Student1 student3 = (Student1) context.getBean("student3");
 		System.out.println(student3.getGrade().toString());
 		
 		log.info("===========测试默认情况下使用相同名字获取的bean是否为同一对象=========");
-		Student student = (Student) context.getBean("student");
-		Student student1 = (Student) context.getBean("student");
+		Student1 student = (Student1) context.getBean("student");
+		Student1 student1 = (Student1) context.getBean("student");
 		System.out.println((student==student1)?"为同一对象":"不为同一对象");
 		
 		log.info("===========测试使用ProtoType情况下使用相同名字获取的bean是否为同一对象=========");
-		Student studentProtoType1 = (Student) context.getBean("studentProtoType");
-		Student studentProtoType2 = (Student) context.getBean("studentProtoType");
+		Student1 studentProtoType1 = (Student1) context.getBean("studentProtoType");
+		Student1 studentProtoType2 = (Student1) context.getBean("studentProtoType");
 		System.out.println((studentProtoType1==studentProtoType2)?"为同一对象":"不为同一对象");
 	}
 

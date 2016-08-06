@@ -1,41 +1,51 @@
 package com.doctor.entity;
 
 public class Student {
-	/**
-	 * 学生ID
-	 */
-	private int id;
-	/**
-	 * 学生姓名
-	 */
-	private String name;
-	/**
-	 * 学生年级
-	 */
+	private int stuId;
+	private String stuName;
+	private int stuAge;
 	private Grade grade;
-
-	public Student(){}
-	public Student(int id, String name, Grade grade) {
+	public Student(int stuId, String stuName, int stuAge, Grade grade) {
 		super();
-		this.id = id;
-		this.name = name;
+		this.stuId = stuId;
+		this.stuName = stuName;
+		this.stuAge = stuAge;
 		this.grade = grade;
 	}
 
-	public int getId() {
-		return id;
+
+	@Override
+	public String toString() {
+		return "Student [stuId=" + stuId + ", stuName=" + stuName + ", stuAge=" + stuAge + /*", gradeName=" + grade.getGradeName()*/  "]";
 	}
 
-	public void setId(int id) {
-		this.id = id;
+
+	public Student(){}
+	
+	public Student(int stuId, String stuName, int stuAge) {
+		super();
+		this.stuId = stuId;
+		this.stuName = stuName;
+		this.stuAge = stuAge;
 	}
 
-	public String getName() {
-		return name;
+	public int getStuId() {
+		return stuId;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setStuId(int stuId) {
+		this.stuId = stuId;
+	}
+	public String getStuName() {
+		return stuName;
+	}
+	public void setStuName(String stuName) {
+		this.stuName = stuName;
+	}
+	public int getStuAge() {
+		return stuAge;
+	}
+	public void setStuAge(int stuAge) {
+		this.stuAge = stuAge;
 	}
 
 	public Grade getGrade() {
@@ -45,8 +55,6 @@ public class Student {
 	public void setGrade(Grade grade) {
 		this.grade = grade;
 	}
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", grade=" + grade + "]";
-	}
+	
+	
 }

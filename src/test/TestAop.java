@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.doctor.service.StudentService;
+import com.doctor.service.StudentService1;
 
 public class TestAop {
 	private static ApplicationContext context = null;
@@ -34,7 +34,7 @@ public class TestAop {
 
 	@Test
 	public void test() {
-		StudentService stuService = (StudentService) context.getBean("studentService");
+		StudentService1 stuService = (StudentService1) context.getBean("studentService");
 		stuService.addStudent("Doctor");
 	}
 }
