@@ -149,8 +149,7 @@
     	<property name="accountDao" ref="accountDao"></property>
     </bean>
     
-    
-    <!-- 添加事务管理器 -->
+      <!-- 添加事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
@@ -168,7 +167,7 @@
             <!-- other methods use the default transaction settings (see below) -->
            <!--  使用事务的方法 -->
             <tx:method name="*"/>
-            <tx:method name="insert*" propagation="REQUIRED" />
+           <!--  <tx:method name="insert*" propagation="REQUIRED" /> -->
         </tx:attributes>
     </tx:advice>
 	<!-- 定义切入点,引用通知 -->
