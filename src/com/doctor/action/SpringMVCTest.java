@@ -11,6 +11,6 @@ public class SpringMVCTest {
 	@RequestMapping("/springHello")
 	public String sayHello() {
 		System.out.println("Spring MVC 测试");
-		return "springTest";
+		return "helloSpring";
 	}
 }
