@@ -57,5 +57,28 @@
       <taglib-location>/WEB-INF/tld/x-rt.tld</taglib-location>
     </taglib>
   </jsp-config>
-  
+  <!-- 配置文件上下文路径 -->
+   <!--  <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/root-context.xml</param-value>
+    </context-param> -->
+    <!-- 配置SpringMVC核心的分发类 -->
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring-mvc.xml</param-value>
+        </init-param>
+        <!-- 容器初始化,Servlet被加载的优先级,如果值为负数或者不存在,则容器不会会自动加载-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <!-- 这里可以为Servlet加上.do后缀 -->
+        <url-pattern>/*.do</url-pattern>
+    </servlet-mapping>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 </web-app>
