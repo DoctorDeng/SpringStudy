@@ -16,6 +16,9 @@
     http://www.springframework.org/schema/tx/spring-tx.xsd
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+     <!-- 上下文内容扫描(controller) 扫描基础包及其子包 -->
+    <context:component-scan base-package="com.doctor.action"></context:component-scan>
+	<!-- <mvc:resources mapping="/resources/**" location="/resources"></mvc:resources> -->
     <!-- 视图转换器 -->
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     	<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
@@ -24,6 +27,4 @@
     	<!-- 自动加上视图页面(.jsp)后缀 -->
     	<property name="suffix" value=".jsp"/>
 	</bean>
-    <!-- 上下文内容扫描(controller) 扫描基础包及其子包 -->
-    <context:component-scan base-package="com.doctor.action"></context:component-scan>
 </beans>

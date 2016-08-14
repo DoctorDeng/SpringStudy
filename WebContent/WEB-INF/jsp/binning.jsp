@@ -48,6 +48,7 @@
 		<p>年龄:<input type="text" name="age" /></p>
 		<p>性别:<input type="text" name="sex" /></p>
 		<p><input type="submit" value="提交" /></p>
+		<input type="date" value="日期" />
 	</form>
 </body>
 </html>
