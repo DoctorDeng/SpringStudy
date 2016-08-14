@@ -164,6 +164,7 @@ public class SpringTest {
 		try {
 			/**
 			 * 将文件传输到指定位置
+			 * file.getOriginalFilename():获取文件原文件文件名
 			 */
 			file.transferTo(new File(path+"/upload"+file.getOriginalFilename()));
 		} catch (IllegalStateException e) {
