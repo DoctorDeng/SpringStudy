@@ -5,6 +5,15 @@ public class Person {
 	private int    age;
 	private String sex;
 	
+	public Person() {
+		super();
+	}
+	public Person(String name, int age, String sex) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.sex = sex;
+	}
 	@Override
 	public String toString() {
 		return "Person [name=" + name + ", age=" + age + ", sex=" + sex + "]";

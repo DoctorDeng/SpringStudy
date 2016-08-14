@@ -79,7 +79,7 @@
         <!-- 注意这里不能加上/  例如：/*.do -->
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
-    <!-- <listener>
+  <!--  <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener> -->
+    </listener>  -->
 </web-app>

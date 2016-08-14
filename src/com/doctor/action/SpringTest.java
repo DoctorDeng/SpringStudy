@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -106,11 +107,41 @@ public class SpringTest {
 		System.out.println(person.toString());
 		return "devanning";
 	}
-	
+	/**
+	 * 测试SpringMVC和Ajax交互
+	 * @param name
+	 * @param age
+	 * @param out
+	 * @return
+	 */
 	@RequestMapping("/ajaxTest") 
 	public String ajaxTest(String name,String age,PrintWriter out) {
 		System.out.println("姓名:"+name+"=="+"年龄:"+age);
+		/**
+		 * 输出从前台页面传输过来的值
+		 */
 		out.print("姓名:"+name+"=="+"年龄:"+age);
+		out.flush();
+		out.close();
 		return "";
+	}
+	
+	@RequestMapping("resetTest/{id}")
+	/**
+	 * 使用 @PathVariable 映射路径变量
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	public String resetTest(@PathVariable()String id,Model model){
+		System.out.println(id);
+		if("1".equals(id)) {
+			model.addAttribute("name","文章一");
+		} else if("2".equals(id)) {
+			model.addAttribute("name","文章二");
+		} else if("3".equals(id)) {
+			model.addAttribute("name","文章三");
+		} 
+		return "testReset";
 	}
 }
