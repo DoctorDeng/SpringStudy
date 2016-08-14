@@ -17,4 +17,8 @@ public class InputAction {
 	public String inputAjax(){
 		return "testAjax";
 	}
+	@RequestMapping("/upload")
+	public String upload(){
+		return "upload";
+	}
 }

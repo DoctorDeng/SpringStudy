@@ -1,5 +1,7 @@
 package com.doctor.action;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doctor.entity.Person;
@@ -143,5 +146,32 @@ public class SpringTest {
 			model.addAttribute("name","文章三");
 		} 
 		return "testReset";
+	}
+	/**
+	 * 测试文件上传
+	 * @return
+	 */
+	@SuppressWarnings("finally")
+	@RequestMapping("/testUploadFile")
+	public String testUploadFile(@RequestParam("file")MultipartFile file, HttpServletRequest request){
+		/**
+		 * 获取当前项目根路径
+		 * request.getServletContext().getRealPath("") 获取当前运行文件的据对路径
+		 */
+		String path = request.getServletContext().getRealPath("/");
+		System.out.println(path);
+		System.out.println(request.getServletContext().getRealPath(""));
+		try {
+			/**
+			 * 将文件传输到指定位置
+			 */
+			file.transferTo(new File(path+"/upload"+file.getOriginalFilename()));
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally{
+			return "success";
+		}
 	}
 }
