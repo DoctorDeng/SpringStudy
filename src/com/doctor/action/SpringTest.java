@@ -3,6 +3,8 @@ package com.doctor.action;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -161,12 +163,25 @@ public class SpringTest {
 		String path = request.getServletContext().getRealPath("/");
 		System.out.println(path);
 		System.out.println(request.getServletContext().getRealPath(""));
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+		Date date = new Date();
+		/**
+		 * 获得格式化的当前日期
+		 */
+		String nowDate = sdf.format(date);
+		String fileName = file.getOriginalFilename();
+		
+		String[] temps = fileName.split("\\.");
+		/**
+		 * 获取文件后缀
+		 */
+		String fileType = temps[1];
 		try {
 			/**
 			 * 将文件传输到指定位置
 			 * file.getOriginalFilename():获取文件原文件文件名
 			 */
-			file.transferTo(new File(path+"/upload"+file.getOriginalFilename()));
+			file.transferTo(new File(path+"/"+nowDate+"."+fileType));
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
