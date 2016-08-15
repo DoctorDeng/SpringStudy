@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.doctor.entity.Grade1;
-import com.doctor.entity.Student1;
+import practice.entity.Grade1;
+import practice.entity.Student1;
 
 public class TestStudent {
 	private static ApplicationContext context = null;

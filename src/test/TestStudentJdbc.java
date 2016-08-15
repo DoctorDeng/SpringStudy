@@ -9,9 +9,9 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.doctor.entity.Grade;
-import com.doctor.entity.Student;
-import com.doctor.service.StudentService;
+import practice.entity.Grade;
+import practice.entity.Student;
+import practice.service.StudentService;
 
 public class TestStudentJdbc {
 

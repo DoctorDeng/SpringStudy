@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.doctor.service.StudentService1;
+import practice.service.StudentService1;
 
 public class TestAop {
 	private static ApplicationContext context = null;

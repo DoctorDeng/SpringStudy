@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.doctor.entity.BeanAnnotationTest;
+import practice.entity.BeanAnnotationTest;
 
 public class TestBeanAnnotation {
 	private static ApplicationContext context = null;

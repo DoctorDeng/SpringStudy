@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.doctor.entity.ResourceTest;
+import practice.entity.ResourceTest;
 
 public class TestResource {
 	private static ApplicationContext context = null;

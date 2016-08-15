@@ -11,8 +11,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.doctor.entity.Account;
-import com.doctor.service.AccountService;
+import practice.entity.Account;
+import practice.service.AccountService;
 
 public class TestAccount {
 	
