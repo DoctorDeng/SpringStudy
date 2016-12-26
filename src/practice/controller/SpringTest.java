@@ -193,4 +193,9 @@ public class SpringTest {
 			return "success";
 		}
 	}
+	
+   public static void main(String[] args) {
+	 final String test = "aa.a.txt";
+	 System.out.println(test.indexOf("."));
+   }
 }

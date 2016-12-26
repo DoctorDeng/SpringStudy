@@ -7,6 +7,7 @@
 <title></title>
 </head>
 <body>
+	<p>返回的消息：${requestScope.resultMessage}</p>
 	<form action="${pageContext.request.contextPath}/user/login.do" method="post">
 		<h5>用戶名:</h5><input type="text" name="userName"  value="${requestScope.user.userName}"/> 
 		<h5>密    碼:</h5><input type="password" name="password" value="${requestScope.user.password}"/>
