@@ -15,8 +15,6 @@ public class TestInterceptor implements HandlerInterceptor{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println("执行到了 preHandle 方法");
 		return true;
 	}
 	// 第二个被执行
@@ -35,7 +33,6 @@ public class TestInterceptor implements HandlerInterceptor{
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		// TODO Auto-generated method stub
 		System.out.println("执行到了 afterCompletion 方法");
 	}
 }
